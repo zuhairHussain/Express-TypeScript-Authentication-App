@@ -7,7 +7,7 @@ import verifyToken from '../lib/verifyToken';
 
 export default (server: Express) => {
   // Users Routes
-  server.post(`/api/users`, [...validate('createUser')], createUser);
+  server.post(`/api/users`, [verifyToken, ...validate('createUser')], createUser);
   server.get(`/api/users`, [verifyToken], getUsers);
   server.get(`/api/users/:id`, [verifyToken, ...validate('userById')], getUserById);
   server.delete(`/api/users/:id`, [verifyToken, authorize([roles.Admin]), ...validate('userById')], deleteUser);
