@@ -2,14 +2,15 @@ import {CreationOptional, InferAttributes, InferCreationAttributes, Model} from 
 import {DataTypes} from 'sequelize';
 import bcrypt from 'bcrypt';
 import sequelize from '../config/db';
+import ErrorHandler from '../services/ErrorHandlerService';
 
 export interface UserInterface {
-  id: CreationOptional<number>;
+  id?: CreationOptional<number>;
   name: string;
   email: string;
   password: string;
-  role: string;
-  validPassword: (password: string) => {};
+  role?: string;
+  validPassword?: any;
 }
 
 interface UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>>, UserInterface {}
@@ -54,6 +55,9 @@ const User = sequelize.define(
 
 function setPassword(user: UserModel) {
   const salt = bcrypt.genSaltSync();
+  if (!user.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+    throw new ErrorHandler(500, 'Password policy not matched.');
+  }
   user.password = bcrypt.hashSync(user.password, salt);
 }
 

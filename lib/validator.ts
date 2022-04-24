@@ -18,10 +18,7 @@ export function validate(method: string) {
     case 'userById':
       return [param('id', 'Valid ID is required').exists().isNumeric()];
     case 'login':
-      return [
-        body('email', 'Valid email is required.').exists().isEmail(),
-        body('password', 'Password is required.').exists()
-      ];
+      return [body('email', 'Valid email is required.').exists().isEmail(), body('password', 'Password is required.').exists()];
     default:
       return [];
   }
