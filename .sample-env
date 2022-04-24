@@ -1,0 +1,27 @@
+# DB Prod Credentials
+DB_HOST=
+DB_NAME=
+DB_USER=
+DB_PASS=
+DB_PORT=
+
+# DB Dev Credentials
+DEV_DB_HOST=
+DEV_DB_NAME=
+DEV_DB_USER=
+DEV_DB_PASS=
+DEV_DB_PORT=
+
+# DB Test Credentials
+TEST_DB_HOST=
+TEST_DB_NAME=
+TEST_DB_USER=
+TEST_DB_PASS=
+TEST_DB_PORT=
+
+# Salt for JWT token
+SALT=
+
+# Application Config
+NODE_ENV=development
+PORT=8000
