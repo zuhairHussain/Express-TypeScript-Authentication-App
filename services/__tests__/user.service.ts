@@ -51,6 +51,21 @@ describe('UserService', () => {
     const response = await supertest(server).get('/api/users').expect(401).set('x-access-token', `${invalidJwt}`);
   });
 
+  it('should not allow user to delete any user with the role user.', async () => {
+    const randomString = faker.random.alphaNumeric(10);
+
+    const payload: UserInterface = {
+      name: randomString,
+      email: `user-${randomString}@email.com`,
+      password: `Abc1234$`,
+    };
+
+    await UserServiceInstance.createUser(payload);
+    let loginRes = await AuthServiceInstance.login(payload);
+
+    await supertest(server).delete('/api/users/1').expect(401).set('x-access-token', `${loginRes.token}`);
+  });
+
   afterAll(async () => {
     await sequelize.close();
   });
