@@ -1,6 +1,8 @@
 # Introduction
 
-Authentication app based on Express.js, MySQL, TypeScript and Sequelize. :heart:
+A boilerplate for kickstart your NodeJS api project with Express.js, MySQL, TypeScript JWT Auth, and Sequelize :)
+
+. :heart:
 
 ## Getting Started
 
