@@ -1,8 +1,6 @@
 # Introduction
 
-A boilerplate for kickstart your NodeJS api project with Express.js, MySQL, TypeScript JWT Auth, and Sequelize :)
-
-. :heart:
+A boilerplate for kickstart your NodeJS api project with Express.js, MySQL, TypeScript JWT Auth, and Sequelize. :heart:
 
 ## Getting Started
 
